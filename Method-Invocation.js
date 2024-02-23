@@ -35,6 +35,13 @@ function Pet(type, legs) {
         console.log(this === myCat); // => false
         console.log(`The ${this.type} has ${this.legs} legs`);
     }
+
+    this.arrowLoginfo = () =>{
+        console.log(`this is arrow`)
+        console.log(this === myCat); // => false
+        console.log(`The ${this.type} has ${this.legs} legs`);
+
+    }
 }
   
   const myCat = new Pet('Cat', 4);
@@ -42,9 +49,15 @@ function Pet(type, legs) {
   // or throws a TypeError in strict mode
 setTimeout(myCat.logInfo, 1000);
 
+setTimeout(
+    myCat.arrowLoginfo
+, 1000);
+
 setTimeout(myCat.logInfo);
 
 // is equivalent to:
 
 const extractedLogInfo = myCat.logInfo;
 setTimeout(extractedLogInfo);
+
+// and this become a function invocation
